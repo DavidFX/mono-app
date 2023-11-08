@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="container flex items-center justify-between h-12 mt-3">
       <div className="flex items-center gap-3">
-        <Link href="/" className="text-lg font-medium ">
+        <Link href="/" className="font-mono text-2xl font-bold">
           MONO
         </Link>
         <SearchBar />

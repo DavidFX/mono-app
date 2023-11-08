@@ -1,4 +1,5 @@
-import { GeistSans } from "geist/font";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.scss";
 import { ThemeProvider } from "@/components/global/theme-provider";
 
@@ -18,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
+    <html lang="en" className={`${GeistSans.className} ${GeistMono.variable}`}>
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
