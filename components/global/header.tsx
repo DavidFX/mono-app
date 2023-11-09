@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ToggleTheme } from "../ui/toggle-theme";
 import { Button } from "../ui/button";
 import SearchBar from "../ui/search-bar";
+import RegisterPopup from "../auth/register-popup";
 
 export default function Header() {
   return (
@@ -15,7 +16,7 @@ export default function Header() {
 
       <div className="flex items-center gap-3">
         <Button variant="outline">Login</Button>
-        <Button>Sign Up</Button>
+        <RegisterPopup />
       </div>
     </header>
   );
