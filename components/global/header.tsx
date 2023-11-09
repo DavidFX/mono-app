@@ -10,22 +10,10 @@ const RegisterPopup = dynamic(() => import("../auth/register-popup"), {
 });
 const LoginPopup = dynamic(() => import("../auth/login-popup"), { ssr: false });
 
-// Supabase Auth
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
-
 export default async function Header() {
-  const supabase = createClient(cookies());
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  console.log(user);
-
   return (
     <header
-      className="container flex items-center justify-between h-12 mt-3"
+      className="container flex items-center justify-between h-12 mt-3 mb-10"
       suppressHydrationWarning
     >
       <div className="flex items-center gap-3">
