@@ -24,9 +24,7 @@ export default function Header() {
 
       <div className="flex items-center gap-3">
         <ToggleTheme />
-        <Button className="ml-2" variant="outline">
-          Login
-        </Button>
+        <Button variant="outline">Login</Button>
         <RegisterPopup />
       </div>
     </header>
