@@ -11,7 +11,7 @@ import { Button } from "../ui/button";
 
 export default function RegisterPopup() {
   return (
-    <Dialog className="">
+    <Dialog>
       <DialogTrigger>
         <Button>Register</Button>
       </DialogTrigger>
