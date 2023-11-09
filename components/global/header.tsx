@@ -1,6 +1,8 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { ToggleTheme } from "../ui/toggle-theme";
+const ToggleTheme = dynamic(() => import("../ui/toggle-theme"), {
+  ssr: false,
+});
 import { Button } from "../ui/button";
 import SearchBar from "../ui/search-bar";
 const RegisterPopup = dynamic(() => import("../auth/register-popup"), {
@@ -21,7 +23,10 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-3">
-        <Button variant="outline">Login</Button>
+        <ToggleTheme />
+        <Button className="ml-2" variant="outline">
+          Login
+        </Button>
         <RegisterPopup />
       </div>
     </header>
