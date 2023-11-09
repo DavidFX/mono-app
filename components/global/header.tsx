@@ -26,6 +26,7 @@ export default async function Header() {
       <div className="flex items-center gap-3">
         <ToggleTheme />
         <LoginPopup />
+
         <RegisterPopup />
       </div>
     </header>
