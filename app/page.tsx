@@ -4,7 +4,7 @@ import PostsList from "@/components/global/posts-list";
 export default async function Index() {
   return (
     <>
-      <Header />
+      <PostsList />
     </>
   );
 }
