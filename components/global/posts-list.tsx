@@ -5,7 +5,6 @@ export default async function PostsList() {
   const supabase = createClient(cookies());
   const { data: posts } = await supabase.from("posts").select("*");
 
-  console.log(posts);
   return (
     <pre className="container px-24 mt-6">{JSON.stringify(posts, null, 2)}</pre>
   );

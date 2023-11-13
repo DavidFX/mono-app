@@ -36,10 +36,13 @@ const registrationSchema = z.object({
 
 // Supabase client
 import { createClient } from "@/utils/supabase/client";
+import { useRouter } from "next/navigation";
 
 const supabase = createClient();
 
 export default function RegisterPopup() {
+  const router = useRouter();
+
   // Define the from
   const form = useForm<z.infer<typeof registrationSchema>>({
     resolver: zodResolver(registrationSchema),
@@ -58,9 +61,8 @@ export default function RegisterPopup() {
         password: fields.password,
       });
 
-      if (error) throw error;
-
       console.log(data);
+      if (error) throw error;
     } catch (error) {
       console.log(error);
     }

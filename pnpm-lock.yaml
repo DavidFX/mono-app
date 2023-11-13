@@ -20,12 +20,30 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.8)(react@18.2.0)
+  '@radix-ui/react-toggle':
+    specifier: ^1.0.3
+    version: 1.0.3(@types/react-dom@18.2.5)(@types/react@18.2.8)(react-dom@18.2.0)(react@18.2.0)
   '@supabase/ssr':
     specifier: latest
     version: 0.0.9(@supabase/supabase-js@2.38.4)
   '@supabase/supabase-js':
     specifier: latest
     version: 2.38.4
+  '@tiptap/extension-character-count':
+    specifier: ^2.1.12
+    version: 2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12)
+  '@tiptap/extension-highlight':
+    specifier: ^2.1.12
+    version: 2.1.12(@tiptap/core@2.1.12)
+  '@tiptap/extension-placeholder':
+    specifier: ^2.1.12
+    version: 2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12)
+  '@tiptap/extension-task-item':
+    specifier: ^2.1.12
+    version: 2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12)
+  '@tiptap/extension-task-list':
+    specifier: ^2.1.12
+    version: 2.1.12(@tiptap/core@2.1.12)
   '@tiptap/pm':
     specifier: ^2.1.12
     version: 2.1.12
@@ -68,6 +86,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.48.2
     version: 7.48.2(react@18.2.0)
+  react-textarea-autosize:
+    specifier: ^8.5.3
+    version: 8.5.3(@types/react@18.2.8)(react@18.2.0)
   sass:
     specifier: ^1.69.5
     version: 1.69.5
@@ -532,6 +553,29 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@radix-ui/react-toggle@1.0.3(@types/react-dom@18.2.5)(@types/react@18.2.8)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Pkqg3+Bc98ftZGsl60CLANXQBBQ4W3mTFS9EJvNxKMZ7magklKV69/id1mlAlOFDDfHvlCms0fx8fA4CMKDJHg==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+    dependencies:
+      '@babel/runtime': 7.23.2
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.5)(@types/react@18.2.8)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.2.8)(react@18.2.0)
+      '@types/react': 18.2.8
+      '@types/react-dom': 18.2.5
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.2.8)(react@18.2.0):
     resolution: {integrity: sha512-D94LjX4Sp0xJFVaoQOd3OO9k7tpBYNOXdVhkltUbGv2Qb9OXdrg/CpsjlZv7ia14Sylv398LswWBVVu5nqKzAQ==}
     peerDependencies:
@@ -732,6 +776,16 @@ packages:
       '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
     dev: false
 
+  /@tiptap/extension-character-count@2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12):
+    resolution: {integrity: sha512-+GFbBG13nvF8mFIeisSERG/Q3CuRsTNwVZIRbJTLgGdbHXFqPhJh4Xfm7cv7OaOYevUlVyO+z5pGD7wIl1bLqQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+      '@tiptap/pm': 2.1.12
+    dev: false
+
   /@tiptap/extension-code-block@2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12):
     resolution: {integrity: sha512-RXtSYCVsnk8D+K80uNZShClfZjvv1EgO42JlXLVGWQdIgaNyuOv/6I/Jdf+ZzhnpsBnHufW+6TJjwP5vJPSPHA==}
     peerDependencies:
@@ -805,6 +859,14 @@ packages:
       '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
     dev: false
 
+  /@tiptap/extension-highlight@2.1.12(@tiptap/core@2.1.12):
+    resolution: {integrity: sha512-buen31cYPyiiHA2i0o2i/UcjRTg/42mNDCizGr1OJwvv3AELG3qOFc4Y58WJWIvWNv+1Dr4ZxHA3GNVn0ANWyg==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+    dev: false
+
   /@tiptap/extension-history@2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12):
     resolution: {integrity: sha512-6b7UFVkvPjq3LVoCTrYZAczt5sQrQUaoDWAieVClVZoFLfjga2Fwjcfgcie8IjdPt8YO2hG/sar/c07i9vM0Sg==}
     peerDependencies:
@@ -857,8 +919,36 @@ packages:
       '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
     dev: false
 
+  /@tiptap/extension-placeholder@2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12):
+    resolution: {integrity: sha512-K52o7B1zkP4vaVy3z4ZwHn+tQy6KlXtedj1skLg+796ImwH2GYS5z6MFOTfKzBO2hLncUzLco/s0C5PLCD6SDw==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+      '@tiptap/pm': 2.1.12
+    dev: false
+
   /@tiptap/extension-strike@2.1.12(@tiptap/core@2.1.12):
     resolution: {integrity: sha512-HlhrzIjYUT8oCH9nYzEL2QTTn8d1ECnVhKvzAe6x41xk31PjLMHTUy8aYjeQEkWZOWZ34tiTmslV1ce6R3Dt8g==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+    dev: false
+
+  /@tiptap/extension-task-item@2.1.12(@tiptap/core@2.1.12)(@tiptap/pm@2.1.12):
+    resolution: {integrity: sha512-uqrDTO4JwukZUt40GQdvB6S+oDhdp4cKNPMi0sbteWziQugkSMLlkYvxU0Hfb/YeziaWWwFI7ssPu/hahyk6dQ==}
+    peerDependencies:
+      '@tiptap/core': ^2.0.0
+      '@tiptap/pm': ^2.0.0
+    dependencies:
+      '@tiptap/core': 2.1.12(@tiptap/pm@2.1.12)
+      '@tiptap/pm': 2.1.12
+    dev: false
+
+  /@tiptap/extension-task-list@2.1.12(@tiptap/core@2.1.12):
+    resolution: {integrity: sha512-BUpYlEWK+Q3kw9KIiOqvhd0tUPhMcOf1+fJmCkluJok+okAxMbP1umAtCEQ3QkoCwLr+vpHJov7h3yi9+dwgeQ==}
     peerDependencies:
       '@tiptap/core': ^2.0.0
     dependencies:
@@ -1954,6 +2044,20 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /react-textarea-autosize@8.5.3(@types/react@18.2.8)(react@18.2.0):
+    resolution: {integrity: sha512-XT1024o2pqCuZSuBt9FwHlaDeNtVrtCXu0Rnz88t1jUGheCLa3PhjE1GH8Ctm2axEtvdCl5SUHYschyQ0L5QHQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.23.2
+      react: 18.2.0
+      use-composed-ref: 1.3.0(react@18.2.0)
+      use-latest: 1.2.1(@types/react@18.2.8)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
@@ -2209,6 +2313,41 @@ packages:
       '@types/react': 18.2.8
       react: 18.2.0
       tslib: 2.6.2
+    dev: false
+
+  /use-composed-ref@1.3.0(react@18.2.0):
+    resolution: {integrity: sha512-GLMG0Jc/jiKov/3Ulid1wbv3r54K9HlMW29IWcDFPEqFkSO2nS0MuefWgMJpeHQ9YJeXDL3ZUF+P3jdXlZX/cQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.8)(react@18.2.0):
+    resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.2.8
+      react: 18.2.0
+    dev: false
+
+  /use-latest@1.2.1(@types/react@18.2.8)(react@18.2.0):
+    resolution: {integrity: sha512-xA+AVm/Wlg3e2P/JiItTziwS7FK92LWrDB0p+hgXloIMuVCeJJ8v6f0eeHyPZaJrM+usM1FkFfbNCrJGs8A/zw==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.2.8
+      react: 18.2.0
+      use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.8)(react@18.2.0)
     dev: false
 
   /use-sidecar@1.1.2(@types/react@18.2.8)(react@18.2.0):

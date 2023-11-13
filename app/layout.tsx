@@ -2,14 +2,8 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.scss";
 import { ThemeProvider } from "@/components/global/theme-provider";
-import Header from "@/components/global/header";
-
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
 
 export const metadata = {
-  metadataBase: new URL(defaultUrl),
   title: "Mono",
   description: "The place you can share your thoughts and be heard.",
 };
@@ -28,7 +22,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
           {children}
         </ThemeProvider>
       </body>
