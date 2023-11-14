@@ -77,7 +77,7 @@ export default function RegisterPopup() {
   };
 
   return (
-    <Dialog>
+    <Dialog modal>
       <DialogTrigger>
         <Button>Register</Button>
       </DialogTrigger>

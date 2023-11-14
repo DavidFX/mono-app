@@ -48,9 +48,6 @@ export default function NewPostHeader({ title, content }: NewPostHeaderProps) {
     if (error) {
       console.log(error);
     }
-
-    console.log(`title: ${title}`);
-    console.log(`content: ${content}`);
   };
 
   return (
