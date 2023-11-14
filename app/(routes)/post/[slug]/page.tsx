@@ -17,7 +17,7 @@ export default async function PostPage({
     .select("slug", { count: "exact" })
     .eq("slug", params.slug);
 
-  if (count === 0) {
+  if (count === 0 || !post) {
     return <div>Post not found</div>;
   } else {
     return (

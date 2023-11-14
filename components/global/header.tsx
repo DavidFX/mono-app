@@ -12,13 +12,14 @@ const LoginPopup = dynamic(() => import("../auth/login-popup"), { ssr: false });
 // Supabase Auth
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
+import { type User } from "@supabase/supabase-js";
 
 export default async function Header() {
   const cookiesStore = cookies();
   const supabase = createClient(cookiesStore);
 
   const { data, error } = await supabase.auth.getSession();
-  const user = data?.user;
+  const user: User | null = data.session?.user ?? null;
 
   if (!user) {
     return (
