@@ -28,6 +28,9 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
+// Suapbase
+import { createClient } from "@/utils/supabase/client";
+
 const registrationSchema = z.object({
   username: z.string().min(3).max(20),
   email: z.string().email(),
@@ -35,12 +38,10 @@ const registrationSchema = z.object({
   confirmPassword: z.string().min(6).max(100),
 });
 
-// Supabase client
-import { createClient } from "@/utils/supabase/client";
-
-const supabase = createClient();
-
 export default function RegisterPopup() {
+  // Supabase client
+  const supabase = createClient();
+
   // Define the from
   const form = useForm<z.infer<typeof registrationSchema>>({
     resolver: zodResolver(registrationSchema),

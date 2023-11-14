@@ -8,8 +8,6 @@ const InputTitle = dynamic(() => import("@/components/editor/input-title"), {
 import { useState } from "react";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import Placeholder from "@tiptap/extension-placeholder";
-import CharacterCount from "@tiptap/extension-character-count";
 import Toolbar from "@/components/editor/toolbar";
 import MainEditor from "@/components/editor/editor";
 
@@ -18,11 +16,10 @@ export default function NewPostPage() {
   const [content, setContent] = useState("");
 
   const editor = useEditor({
-    extensions: [
-      StarterKit,
-      Placeholder.configure({ placeholder: "Write your post..." }),
-      CharacterCount.configure({ limit: 10000 }),
-    ],
+    extensions: [StarterKit],
+    // onBlur({ editor, event }) {
+    //   editor.commands.blur();
+    // },
     editorProps: {
       attributes: {
         class:
@@ -30,16 +27,21 @@ export default function NewPostPage() {
       },
     },
     content,
+    onUpdate({ editor }) {
+      setContent(editor.getHTML());
+    },
   });
 
   return (
     <>
-      <NewPostHeader />
-      <div className="container px-32 space-y-4">
-        <h1 className="text-4xl font-bold ">Create a new Post</h1>
+      <NewPostHeader title={title} content={content} />
+      <div className="container space-y-4 lg:px-32">
+        <h1 className="text-4xl font-bold ">New post</h1>
         <InputTitle title={title} placeholder="Title..." onChange={setTitle} />
-        <Toolbar editor={editor} />
-        <MainEditor editor={editor} />
+        <div className="">
+          <Toolbar editor={editor} />
+          <MainEditor editor={editor} />
+        </div>
       </div>
     </>
   );
