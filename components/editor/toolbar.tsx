@@ -1,5 +1,7 @@
 import { type Editor } from "@tiptap/react";
 
+import { cn } from "@/utils/utils";
+
 import {
   Bold,
   Italic,
@@ -22,7 +24,7 @@ function Toolbar({ editor }: { editor: Editor | null }) {
   if (!editor) return null;
 
   return (
-    <div className="flex flex-row flex-wrap items-center flex-grow w-full h-full gap-3 p-3 border border-b-0 rounded-md rounded-b-none borfer-x-1 border-t-1">
+    <div className="sticky top-0 z-50 flex flex-row flex-wrap items-center flex-grow w-full gap-3 p-3 bg-black border rounded-md rounded-b-none h-fit borfer-x-1 border-t-1">
       <Toggle
         size="sm"
         pressed={editor.isActive("heading", { level: 2 })}

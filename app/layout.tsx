@@ -15,7 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.className} ${GeistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${GeistSans.className} ${GeistMono.variable} overflow-x-hidden`}
+    >
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"

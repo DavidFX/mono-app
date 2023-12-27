@@ -38,10 +38,9 @@ const registrationSchema = z.object({
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
-const supabase = createClient();
-
 export default function RegisterPopup() {
   const router = useRouter();
+  const supabase = createClient();
 
   // Define the from
   const form = useForm<z.infer<typeof registrationSchema>>({

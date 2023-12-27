@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import { createClient } from "@/utils/supabase/client";
 const supabase: SupabaseClient = createClient();
 import { type SupabaseClient } from "@supabase/supabase-js";
+import { useToast } from "../ui/use-toast";
 
 interface NewPostHeaderProps {
   title: string;
@@ -34,6 +35,7 @@ function string_to_slug(str: string) {
 }
 
 export default function NewPostHeader({ title, content }: NewPostHeaderProps) {
+  const { toast } = useToast();
   const supabase = createClient();
   const router = useRouter();
 
@@ -45,6 +47,15 @@ export default function NewPostHeader({ title, content }: NewPostHeaderProps) {
         slug: string_to_slug(title.toLowerCase()),
       },
     ]);
+
+    if (!error) {
+      toast({
+        title: "Post created!",
+        description: "Your post has been created successfully.",
+        status: "success",
+      });
+      router.push(`/post/${string_to_slug(title.toLowerCase())}`);
+    }
     if (error) {
       console.log(error);
     }

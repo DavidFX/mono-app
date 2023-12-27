@@ -1,13 +1,13 @@
 h1 {
-    @apply scroll-m-20 text-4xl py-2 font-extrabold tracking-tight lg:text-5xl;
+    @apply scroll-m-20 text-4xl border-b pt-1 py-2 font-extrabold tracking-tight lg:text-5xl;
 }
 
 h2 {
-   @apply scroll-m-20 border-b pt-1 pb-2 text-3xl font-semibold tracking-tight first:mt-0
+   @apply scroll-m-20  py-2 text-3xl font-semibold tracking-tight first:mt-0
 }
 
 h3 {
-    @apply scroll-m-20 py-1 text-2xl font-semibold tracking-tight;
+    @apply scroll-m-20 py-2 text-2xl font-semibold tracking-tight;
 }
 
 p {

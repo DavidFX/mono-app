@@ -1,5 +1,7 @@
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
+import Header from "@/components/global/header";
+import "@/app/styles/editor.scss";
 
 export default async function PostPage({
   params,
@@ -22,9 +24,13 @@ export default async function PostPage({
   } else {
     return (
       <>
-        <h1>{post[0].title}</h1>
-        <div>
-          <pre>{JSON.stringify(post, null, 2)}</pre>
+        <Header />
+        <div className="container">
+          <h1>{post[0].title}</h1>
+          <article
+            className="mb-12"
+            dangerouslySetInnerHTML={{ __html: post[0].content }}
+          ></article>
         </div>
       </>
     );
