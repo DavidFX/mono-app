@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { createClient } from "@/utils/supabase/server";
+import { createSupabseServerClient } from "@/utils/supabase/server";
 import Header from "@/components/global/header";
 import "@/app/styles/editor.scss";
 
@@ -8,7 +8,8 @@ export default async function PostPage({
 }: {
   params: { slug: string };
 }) {
-  const supabase = createClient(cookies());
+  const supabase = await createSupabseServerClient();
+
   const { data: post } = await supabase
     .from("posts")
     .select()

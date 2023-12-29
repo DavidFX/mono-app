@@ -5,7 +5,6 @@ const ToggleTheme = dynamic(() => import("../ui/toggle-theme"), {
 });
 
 import SearchBar from "../ui/search-bar";
-import { readUserSession } from "@/utils/server/actions";
 
 const RegisterPopup = dynamic(() => import("../auth/register-popup"), {
   ssr: false,
@@ -16,12 +15,13 @@ const LogoutPopup = dynamic(() => import("../auth/logout-popup"), {
 const LoginPopup = dynamic(() => import("../auth/login-popup"), { ssr: false });
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "../ui/button";
+import { readUserSession } from "@/utils/server/actions";
+import AvatarComponent from "../user/avatar-component";
 
 export default async function Header() {
   const { data } = await readUserSession();
 
-  if (data) {
+  if (data.session?.user) {
     return (
       <header className="container flex items-center justify-between h-12 mt-3 mb-10">
         <div className="flex items-center gap-3">
@@ -33,11 +33,7 @@ export default async function Header() {
 
         <div className="flex items-center gap-3">
           <ToggleTheme />
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <LogoutPopup />
+          <AvatarComponent />
         </div>
       </header>
     );

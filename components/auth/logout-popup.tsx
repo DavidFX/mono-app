@@ -1,6 +1,4 @@
 "use client";
-
-// UI components
 import {
   Dialog,
   DialogHeader,
@@ -12,23 +10,16 @@ import {
 } from "../ui/dialog";
 
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-
-import { createClient } from "@/utils/supabase/client";
+import { useToast } from "@/components/ui/use-toast";
+import { handleLogout } from "./actions";
 
 export default function LogoutPopup() {
-  const router = useRouter();
-  const supabase = createClient();
-
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push("/");
-  };
+  const { toast } = useToast();
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Logout</Button>
+    <Dialog modal>
+      <DialogTrigger>
+        <div>Logout</div>
       </DialogTrigger>
       <DialogContent className="flex flex-col items-center">
         <DialogHeader>
@@ -37,14 +28,16 @@ export default function LogoutPopup() {
             Are you sure you want to logout?
           </DialogDescription>
         </DialogHeader>
-        <div className="flex gap-3">
-          <Button variant="destructive" onClick={handleLogout}>
+        <form action={handleLogout} className="flex gap-3">
+          <Button variant="destructive" type="submit">
             Yes
           </Button>
           <DialogClose>
-            <Button variant="outline">No</Button>
+            <Button type="reset" variant="outline">
+              No
+            </Button>
           </DialogClose>
-        </div>
+        </form>
       </DialogContent>
     </Dialog>
   );

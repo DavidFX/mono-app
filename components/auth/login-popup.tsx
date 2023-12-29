@@ -14,7 +14,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -28,47 +27,56 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-const registrationSchema = z.object({
-  username: z.string().min(3).max(20),
-  email: z.string().email(),
-  password: z.string().min(6).max(100),
-});
-
-// Supabase client
+// Suapbase
+import { useToast } from "@/components/ui/use-toast";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
-export default function RegisterPopup() {
+const registrationSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(3).max(100),
+});
+
+export default function LoginPopup() {
+  const { toast } = useToast();
   const router = useRouter();
-  const supabase = createClient();
 
   // Define the from
   const form = useForm<z.infer<typeof registrationSchema>>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
-      username: "",
       email: "",
       password: "",
     },
   });
 
-  // Handle form submission
+  // Handle form submission / registration
   const onSubmit = async (fields: z.infer<typeof registrationSchema>) => {
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: fields.email,
-        password: fields.password,
-      });
+    const supabase = createClient();
 
-      console.log(data);
-      if (error) throw error;
-    } catch (error) {
-      console.log(error);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: fields.email,
+      password: fields.password,
+    });
+    if (error) {
+      toast({
+        title: "Login failed",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    } else {
+      toast({
+        title: "Login successful",
+        description: "You are now logged in",
+        variant: "default",
+      });
+      router.refresh();
     }
   };
 
   return (
-    <Dialog>
+    <Dialog modal>
       <DialogTrigger>
         <Button variant="outline">Login</Button>
       </DialogTrigger>
@@ -76,7 +84,7 @@ export default function RegisterPopup() {
         <DialogHeader>
           <DialogTitle>Login</DialogTitle>
           <DialogDescription>
-            Login to your account to access all features
+            Login to your account to continue
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
