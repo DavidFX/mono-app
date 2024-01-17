@@ -23,7 +23,7 @@ export default async function Header() {
 
   if (data.session?.user) {
     return (
-      <header className="container flex items-center justify-between h-12 mt-3 mb-10">
+      <header className="container flex items-center justify-between h-12 mx-auto mt-3 mb-10">
         <div className="flex items-center gap-3">
           <Link href="/" className="font-mono text-2xl font-bold">
             MONO
@@ -40,7 +40,7 @@ export default async function Header() {
   } else {
     return (
       <header
-        className="container flex items-center justify-between h-12 mt-3 mb-10"
+        className="container flex items-center justify-between h-12 mx-auto mt-3 mb-10"
         suppressHydrationWarning
       >
         <div className="flex items-center gap-3">

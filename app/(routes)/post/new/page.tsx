@@ -38,7 +38,7 @@ export default function NewPostPage() {
   return (
     <>
       <NewPostHeader title={title} content={content} />
-      <div className="container space-y-4 lg:px-32">
+      <div className="container mx-auto space-y-4 lg:px-32">
         <h1 className="text-4xl font-bold ">New post</h1>
         <InputTitle title={title} placeholder="Title..." onChange={setTitle} />
         <div className="relative">

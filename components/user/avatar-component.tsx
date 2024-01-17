@@ -11,8 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import LogoutPopup from "../auth/logout-popup";
-import { handleLogout } from "../auth/actions";
 
 import { createClient } from "@/utils/supabase/client";
 import { useToast } from "../ui/use-toast";
@@ -44,6 +42,7 @@ export default function AvatarComponent() {
           onSelect={async () => {
             const supabase = createClient();
             const { error } = await supabase.auth.signOut();
+            location.reload();
             if (error)
               toast({
                 value: error.message,

@@ -10,18 +10,17 @@ export default async function PostPage({
 }) {
   const supabase = await createSupabseServerClient();
 
-  const { data: post } = await supabase
+  const { data: post, error } = await supabase
     .from("posts")
     .select()
     .eq("slug", params.slug);
 
-  const { count } = await supabase
-    .from("posts")
-    .select("slug", { count: "exact" })
-    .eq("slug", params.slug);
-
-  if (count === 0 || !post) {
-    return <div>Post not found</div>;
+  if (!post || error) {
+    return (
+      <div>
+        Post not found <br /> {error.message}
+      </div>
+    );
   } else {
     return (
       <>
