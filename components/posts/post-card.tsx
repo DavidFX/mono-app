@@ -41,7 +41,7 @@ function PostCard({
             </div>
             <div className="flex items-center gap-2">
               <MessageSquareIcon size={20} />
-              <span>{comments} comments</span>
+              <span>{comments}</span>
             </div>
           </div>
           {/* Bookmark */}
