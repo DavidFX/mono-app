@@ -9,9 +9,19 @@ interface PostCardProps {
   title: string;
   slug: string;
   logged_in_user: boolean;
+  likes: number;
+  comments: number;
 }
 
-function PostCard({ id, author, title, slug, logged_in_user }: PostCardProps) {
+function PostCard({
+  id,
+  author,
+  title,
+  slug,
+  likes,
+  logged_in_user,
+  comments,
+}: PostCardProps) {
   return (
     <Card>
       <CardHeader>
@@ -26,12 +36,12 @@ function PostCard({ id, author, title, slug, logged_in_user }: PostCardProps) {
           {/* Likes and comments */}
           <div className="flex gap-4">
             <div className="flex items-center gap-2">
-              <ThumbsUpIcon size={16} />
-              <span>12</span>
+              <ThumbsUpIcon size={20} />
+              <span>{likes}</span>
             </div>
             <div className="flex items-center gap-2">
-              <MessageSquareIcon size={16} />
-              <span>10 comments</span>
+              <MessageSquareIcon size={20} />
+              <span>{comments} comments</span>
             </div>
           </div>
           {/* Bookmark */}

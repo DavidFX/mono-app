@@ -9,7 +9,7 @@ async function PostsList() {
 
   let { data: posts, error } = await supabase
     .from("posts")
-    .select(`id, title, slug, profiles(full_name)`);
+    .select(`*, profiles(full_name), comments(count)`);
 
   if (error) {
     console.error(error);
@@ -23,6 +23,8 @@ async function PostsList() {
           key={post.id}
           id={post.id}
           slug={post.slug}
+          likes={post.likes}
+          comments={post.comments[0].count}
           // @ts-ignore
           author={post.profiles ? post.profiles.full_name : "No author"}
           title={post.title}
