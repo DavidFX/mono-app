@@ -23,6 +23,7 @@ async function PostsList() {
           key={post.id}
           id={post.id}
           slug={post.slug}
+          // @ts-ignore
           author={post.profiles ? post.profiles.full_name : "No author"}
           title={post.title}
           logged_in_user={user_data.session?.user ? true : false}
