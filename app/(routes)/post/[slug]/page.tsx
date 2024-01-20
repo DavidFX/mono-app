@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import { createSupabseServerClient } from "@/utils/supabase/server";
 import Header from "@/components/global/header";
 import "@/app/styles/editor.scss";
@@ -13,23 +12,24 @@ export default async function PostPage({
   const { data: post, error } = await supabase
     .from("posts")
     .select()
-    .eq("slug", params.slug);
-
+    .eq("slug", params.slug)
+    .single();
   if (!post || error) {
+    console.log(params.slug, post, error);
     return (
       <div>
-        Post not found <br /> {error.message}
+        Post not found <br /> {error?.message}
       </div>
     );
   } else {
     return (
       <>
         <Header />
-        <div className="container">
-          <h1>{post[0].title}</h1>
+        <div className="container mx-auto">
+          <h1>{post.title}</h1>
           <article
             className="mb-12"
-            dangerouslySetInnerHTML={{ __html: post[0].content }}
+            dangerouslySetInnerHTML={{ __html: post.content }}
           ></article>
         </div>
       </>

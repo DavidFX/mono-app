@@ -1,14 +1,19 @@
+"use client";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { MessageSquareIcon, ThumbsUpIcon } from "lucide-react";
-import BookmarkButton from "./bookmark";
+import { BookmarkIcon, MessageSquareIcon, ThumbsUpIcon } from "lucide-react";
 import Link from "next/link";
+import { createSupabseServerClient } from "@/utils/supabase/server";
+import { Button } from "../ui/button";
+import { createClient } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
+import { useBookmark } from "@/utils/hooks/useBookmark";
 
 interface PostCardProps {
   id: string;
   author: string;
   title: string;
   slug: string;
-  logged_in_user: boolean;
+  user_id: string | undefined;
   likes: number;
   comments: number;
 }
@@ -19,9 +24,11 @@ function PostCard({
   title,
   slug,
   likes,
-  logged_in_user,
+  user_id,
   comments,
 }: PostCardProps) {
+  const { isBookmarked, toggleBookmark } = useBookmark(id, user_id);
+
   return (
     <Card>
       <CardHeader>
@@ -45,7 +52,15 @@ function PostCard({
             </div>
           </div>
           {/* Bookmark */}
-          {logged_in_user && <BookmarkButton post_id={id} />}
+          {!isBookmarked ? (
+            <Button onClick={toggleBookmark} variant="outline">
+              <BookmarkIcon size={16} />
+            </Button>
+          ) : (
+            <Button onClick={toggleBookmark}>
+              <BookmarkIcon size={16} />
+            </Button>
+          )}
         </div>
       </CardHeader>
     </Card>

@@ -11,6 +11,7 @@ h3 {
 }
 
 p {
+
     @apply leading-7 [&:not(:first-child)]:mt-6;
 }
 

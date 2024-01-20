@@ -28,7 +28,7 @@ async function PostsList() {
           // @ts-ignore
           author={post.profiles ? post.profiles.full_name : "No author"}
           title={post.title}
-          logged_in_user={user_data.session?.user ? true : false}
+          user_id={user_data.session?.user.id}
         />
       ))}
     </div>
