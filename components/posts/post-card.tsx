@@ -30,7 +30,7 @@ function PostCard({
   const { isBookmarked, toggleBookmark } = useBookmark(id, user_id);
 
   return (
-    <Card>
+    <Card className="max-w-3xl">
       <CardHeader>
         <CardDescription className="flex">
           <span>{author}</span>

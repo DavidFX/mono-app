@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { createClient } from "../supabase/client";
+import { useToast } from "@/components/ui/use-toast";
 
 export function useBookmark(
   post_id: string | undefined,
   user_id: string | undefined
 ) {
   const supabase = createClient();
+  const { toast } = useToast();
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   // Check if post is bookmarked
@@ -28,8 +30,11 @@ export function useBookmark(
     await supabase
       .from("bookmarks")
       .insert({ post_id: post_id, user_id: user_id });
-
     setIsBookmarked(true);
+    toast({
+      description: "Added to bookmarks",
+      variant: "default",
+    });
   };
 
   // Remove from bookmarks function
@@ -39,8 +44,11 @@ export function useBookmark(
       .delete()
       .eq("post_id", post_id)
       .eq("user_id", user_id);
-
     setIsBookmarked(false);
+    toast({
+      description: "Removed from bookmarks",
+      variant: "default",
+    });
   };
 
   // Toggle bookmark function

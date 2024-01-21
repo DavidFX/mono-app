@@ -1,6 +1,7 @@
 import { createSupabseServerClient } from "@/utils/supabase/server";
 import Header from "@/components/global/header";
 import "@/app/styles/editor.scss";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default async function PostPage({
   params,
@@ -25,12 +26,18 @@ export default async function PostPage({
     return (
       <>
         <Header />
-        <div className="container mx-auto">
+        <div className="container mx-auto ">
           <h1>{post.title}</h1>
           <article
             className="mb-12"
             dangerouslySetInnerHTML={{ __html: post.content }}
           ></article>
+          <Card>
+            <CardHeader>
+              <CardTitle>Comments</CardTitle>
+            </CardHeader>
+            <CardContent></CardContent>
+          </Card>
         </div>
       </>
     );
