@@ -35,7 +35,9 @@ export default function AvatarComponent() {
         <DropdownMenuItem>
           <Link href="/post/new">Create Post</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>Reading List</DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/reading_list">Reading List</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem>Settings</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem

@@ -19,7 +19,7 @@ export default function RootLayout({
       lang="en"
       className={`${GeistSans.className} ${GeistMono.variable} overflow-x-hidden`}
     >
-      <body className="w-screen overflow-x-hidden bg-background text-foreground">
+      <body className="w-screen pb-12 overflow-x-hidden bg-background text-foreground">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
