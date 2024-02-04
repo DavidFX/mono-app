@@ -17,7 +17,7 @@ export default async function ReadingList() {
   }
 
   return (
-    <div className="container flex flex-col gap-8 px-64">
+    <div className="container flex flex-col gap-8 mx-auto">
       <h2>
         {bookmarks?.length === 0
           ? "You have no bookmarks"

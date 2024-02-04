@@ -17,7 +17,7 @@ async function PostsList() {
   }
 
   return (
-    <div className="container flex flex-col gap-8 px-64">
+    <div className="container flex flex-col gap-8 mx-auto">
       {posts?.map((post) => (
         <PostCard
           key={post.id}
