@@ -16,10 +16,13 @@ export default async function ReadingList() {
     return <div>Error</div>;
   }
 
-  console.log(bookmarks);
-
   return (
     <div className="container flex flex-col gap-8 px-64">
+      <h2>
+        {bookmarks?.length === 0
+          ? "You have no bookmarks"
+          : "Here are your bookmarks"}
+      </h2>
       {bookmarks?.map((bookmark) => (
         <PostCard
           // @ts-ignore

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createClient } from "../supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 export function useBookmark(
   post_id: string | undefined,
@@ -9,6 +10,7 @@ export function useBookmark(
   const supabase = createClient();
   const { toast } = useToast();
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const router = useRouter();
 
   // Check if post is bookmarked
   const checkIfBookmarked = async () => {
