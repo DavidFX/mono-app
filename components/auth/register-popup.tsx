@@ -31,11 +31,11 @@ import { useForm } from "react-hook-form";
 import { useToast } from "@/components/ui/use-toast";
 import { createClient } from "@/utils/supabase/client";
 
-import { useRouter } from "next/navigation";
-
 const registrationSchema = z
   .object({
     email: z.string().email(),
+    username: z.string().min(3).max(100),
+    full_name: z.string().min(3).max(100),
     password: z.string().min(3).max(100),
     confirmPassword: z.string().min(3).max(100),
   })
@@ -52,6 +52,8 @@ export default function RegisterPopup() {
     resolver: zodResolver(registrationSchema),
     defaultValues: {
       email: "",
+      username: "",
+      full_name: "",
       password: "",
       confirmPassword: "",
     },
@@ -64,7 +66,12 @@ export default function RegisterPopup() {
     const { data, error } = await supabase.auth.signUp({
       email: fields.email,
       password: fields.password,
-      options: { emailRedirectTo: `${location.origin}/auth/confirm` },
+      options: {
+        emailRedirectTo: `${location.origin}/auth/confirm`,
+        data: {
+          username: fields.username,
+        },
+      },
     });
 
     if (error) {
@@ -114,6 +121,34 @@ export default function RegisterPopup() {
                       placeholder="example@gmail.com"
                       {...field}
                     />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input type="text" placeholder="username" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="full_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Full name</FormLabel>
+                  <FormControl>
+                    <Input type="text" placeholder="Full name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
