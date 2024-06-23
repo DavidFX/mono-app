@@ -59,7 +59,7 @@ export default function NewPostHeader({ title, content }: NewPostHeaderProps) {
         description: "Your post has been created successfully.",
         variant: "default",
       });
-      router.push(`/post/${string_to_slug(title)}`);
+      router.push("/my_posts");
     }
     if (error) {
       toast({

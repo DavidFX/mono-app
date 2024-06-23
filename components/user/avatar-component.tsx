@@ -21,7 +21,7 @@ export default function AvatarComponent() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar>
+        <Avatar className="cursor-pointer">
           <AvatarImage
             className="w-10 h-10 rounded-full"
             src="https://github.com/shadcn.png"
@@ -30,17 +30,20 @@ export default function AvatarComponent() {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center">
-        <DropdownMenuItem>Account</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        {/* <DropdownMenuItem>Account</DropdownMenuItem> */}
+        {/* <DropdownMenuSeparator /> */}
+        <DropdownMenuItem className="cursor-pointer">
+          <Link href="/my_posts">My Posts</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
           <Link href="/post/new">Create Post</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
           <Link href="/reading_list">Reading List</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem>Settings</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
+          className="cursor-pointer"
           onSelect={async () => {
             const supabase = createClient();
             const { error } = await supabase.auth.signOut();

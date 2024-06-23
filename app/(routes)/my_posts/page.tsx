@@ -1,8 +1,7 @@
 import Header from "@/components/global/header";
-import ReadingList from "@/components/posts/reading-list";
-
-import { readUserSession } from "@/utils/server/actions";
+import PostsList from "@/components/posts/posts-list";
 import { redirect } from "next/navigation";
+import { readUserSession } from "@/utils/server/actions";
 
 export default async function Index() {
   const { data } = await readUserSession();
@@ -10,14 +9,10 @@ export default async function Index() {
   if (!data.session?.user) {
     redirect("/");
   }
-
-  if (!data.session?.user) {
-    return <div>You must be logged in to view this page.</div>;
-  }
   return (
     <>
       <Header />
-      <ReadingList />
+      <PostsList type="user" />
     </>
   );
 }

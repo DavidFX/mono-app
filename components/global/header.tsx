@@ -14,7 +14,6 @@ const LogoutPopup = dynamic(() => import("../auth/logout-popup"), {
 });
 const LoginPopup = dynamic(() => import("../auth/login-popup"), { ssr: false });
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { readUserSession } from "@/utils/server/actions";
 import AvatarComponent from "../user/avatar-component";
 
@@ -28,7 +27,7 @@ export default async function Header() {
           <Link href="/" className="font-mono text-2xl font-bold">
             MONO
           </Link>
-          <SearchBar />
+          {/* <SearchBar /> */}
         </div>
 
         <div className="flex items-center gap-3">
@@ -50,7 +49,7 @@ export default async function Header() {
           >
             MONO
           </Link>
-          <SearchBar />
+          {/* <SearchBar /> */}
         </div>
 
         <div className="flex items-center gap-3">

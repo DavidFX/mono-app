@@ -45,7 +45,7 @@ export default async function Comments({ postId }: CommentProps) {
   }
 
   return (
-    <section aria-label="Comments">
+    <section aria-label="Comments" id="comments">
       <Card>
         <CardHeader>
           <CardTitle>Comments</CardTitle>

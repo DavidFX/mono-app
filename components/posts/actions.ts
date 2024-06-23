@@ -12,7 +12,13 @@ export async function addToBookmars(postId: string, userId: string) {
   if (error) {
     throw error
   }
+}
 
-  console.log(data)
+export async function deletePost (postId: string) {
+  const supabase = await createSupabseServerClient()
+  const {error} = await supabase.from("posts").delete().eq("id", postId)
 
+  if (error) {
+    throw error
+  }
 }

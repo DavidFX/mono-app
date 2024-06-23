@@ -1,12 +1,16 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { BookmarkIcon, MessageSquareIcon, ThumbsUpIcon } from "lucide-react";
+import {
+  BookmarkIcon,
+  EditIcon,
+  MessageSquareIcon,
+  ThumbsUpIcon,
+} from "lucide-react";
 import Link from "next/link";
-import { createSupabseServerClient } from "@/utils/supabase/server";
 import { Button } from "../ui/button";
-import { createClient } from "@/utils/supabase/client";
-import { useEffect, useState } from "react";
 import { useBookmark } from "@/utils/hooks/useBookmark";
+const DeletePopup = dynamic(() => import("./delete-popup"), { ssr: false });
 
 interface PostCardProps {
   id: string;
@@ -16,6 +20,8 @@ interface PostCardProps {
   user_id: string | undefined;
   likes: number;
   comments: number;
+  author_view?: boolean;
+  logedIn?: boolean;
 }
 
 function PostCard({
@@ -26,6 +32,8 @@ function PostCard({
   likes,
   user_id,
   comments,
+  author_view = false,
+  logedIn,
 }: PostCardProps) {
   const { isBookmarked, toggleBookmark } = useBookmark(id, user_id);
 
@@ -51,16 +59,25 @@ function PostCard({
               <span>{comments}</span>
             </div>
           </div>
-          {/* Bookmark */}
-          {!isBookmarked ? (
-            <Button onClick={toggleBookmark} variant="outline">
-              <BookmarkIcon size={16} />
-            </Button>
-          ) : (
-            <Button onClick={toggleBookmark}>
-              <BookmarkIcon size={16} />
-            </Button>
-          )}
+          <div className="flex gap-4">
+            {/* Bookmark */}
+            {/* If user is not logged in hide bookmark button */}
+            {author_view !== true && logedIn ? (
+              !isBookmarked ? (
+                <Button onClick={toggleBookmark} variant="outline">
+                  <BookmarkIcon size={16} />
+                </Button>
+              ) : (
+                <Button onClick={toggleBookmark}>
+                  <BookmarkIcon size={16} />
+                </Button>
+              )
+            ) : (
+              <></>
+            )}
+            {/* Delete */}
+            {author_view && <DeletePopup id={id} />}
+          </div>
         </div>
       </CardHeader>
     </Card>

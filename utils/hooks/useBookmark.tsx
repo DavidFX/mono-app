@@ -57,8 +57,10 @@ export function useBookmark(
   const toggleBookmark = () => {
     if (isBookmarked) {
       removeFromBookmarks();
+      router.refresh();
     } else {
       addToBookmarks();
+      router.refresh();
     }
   };
 

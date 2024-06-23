@@ -6,23 +6,21 @@ const InputTitle = dynamic(() => import("@/components/editor/input-title"), {
   ssr: false,
 });
 
-import { useState, useLayoutEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "@/components/editor/toolbar";
 import MainEditor from "@/components/editor/editor";
+import { useRouter } from "next/navigation";
+import { readUserSession } from "@/utils/server/actions";
 
 export default function NewPostPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  const div = useRef<HTMLDivElement>();
+  const router = useRouter();
 
   const editor = useEditor({
     extensions: [StarterKit],
-    // onBlur({ editor, event }) {
-    //   editor.commands.blur();
-    // },
     editorProps: {
       attributes: {
         class:
@@ -34,6 +32,17 @@ export default function NewPostPage() {
       setContent(editor.getHTML());
     },
   });
+
+  useEffect(() => {
+    async function userSession() {
+      const { data } = await readUserSession();
+      if (!data.session?.user) {
+        router.push("/");
+      }
+    }
+
+    userSession();
+  }, []);
 
   return (
     <>
