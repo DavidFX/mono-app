@@ -34,7 +34,6 @@ import { createClient } from "@/utils/supabase/client";
 const registrationSchema = z
   .object({
     email: z.string().email(),
-    username: z.string().min(3).max(100),
     full_name: z.string().min(3).max(100),
     password: z.string().min(3).max(100),
     confirmPassword: z.string().min(3).max(100),
@@ -52,7 +51,6 @@ export default function RegisterPopup() {
     resolver: zodResolver(registrationSchema),
     defaultValues: {
       email: "",
-      username: "",
       full_name: "",
       password: "",
       confirmPassword: "",
@@ -69,7 +67,6 @@ export default function RegisterPopup() {
       options: {
         emailRedirectTo: `${location.origin}/auth/confirm`,
         data: {
-          username: fields.username,
           full_name: fields.full_name,
         },
       },
