@@ -130,26 +130,12 @@ export default function RegisterPopup() {
 
             <FormField
               control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Username</FormLabel>
-                  <FormControl>
-                    <Input type="text" placeholder="username" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
               name="full_name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Full name</FormLabel>
                   <FormControl>
-                    <Input type="text" placeholder="Full name" {...field} />
+                    <Input type="text" placeholder="Full Name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
