@@ -70,6 +70,7 @@ export default function RegisterPopup() {
         emailRedirectTo: `${location.origin}/auth/confirm`,
         data: {
           username: fields.username,
+          full_name: fields.full_name,
         },
       },
     });
